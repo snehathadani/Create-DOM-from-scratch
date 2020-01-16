@@ -24,6 +24,12 @@ const toggleMovieModal = ()=> {
     addMovieModal.classList.toggle('visible')//addMovieModal.className can also work
     toggleBackdrop();
 }//this will keep all other classes and will keep the visible depending upon if we toggle or not
+
+const clearMovieInputs=()=>{
+    for(const userInput of userInputs){
+        userInput.value ='';
+    }
+}
 const cancelAddMovie = ()=> {
     toggleMovieModal();
     };
@@ -41,7 +47,17 @@ const addMovieHandler=()=>{
             alert('Please enter valid values')
             return;
         }
+        const newMovie={
+            title:titleValue,
+            image:imageUrlValue,
+            rating:ratingValue
+        };
+        movies.push(newMovie);
+        console.log(movies);
+        toggleMovieModal();
+        clearMovieInputs();
     }
+
 
 const backdropClickHandler = ()=> {
     toggleMovieModal();
