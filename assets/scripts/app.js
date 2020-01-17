@@ -27,7 +27,7 @@ const updateUI = ()=> {
     }
 };
 
-const deleteMovieHandler =(movieId)=> {
+const deleteMovie = (movieId)=>{
     let identifiedIndex =0;
     for(const movie of movies){
         if(movie.id === movieId){
@@ -39,6 +39,16 @@ const deleteMovieHandler =(movieId)=> {
     const listRoot = document.getElementById('movie-list');
     listRoot.children[identifiedIndex].remove();
    // listRoot.removeChild(listRoot.children[movieIndex]);
+
+}
+
+
+const deleteMovieHandler =(movieId)=> {
+    //deleteMovie(movieId); or 
+    const deleteMovieModal = document.getElementById('delete-modal')
+    deleteMovieModal.classList.add('visible');
+    toggleBackdrop();
+
 };
 
 
@@ -63,11 +73,12 @@ const renderNewMovieElement = (id,title,image,rating)=> {
 const toggleBackdrop = ()=>{
     backdrop.classList.toggle('visible');
 }
+/*  redundunt due to added deleteHandler functionality shows two modals on top of each other
 const toggleMovieModal = ()=> {
     addMovieModal.classList.toggle('visible')//addMovieModal.className can also work
     toggleBackdrop();
 }//this will keep all other classes and will keep the visible depending upon if we toggle or not
-
+*/
 const clearMovieInputs=()=>{
     for(const userInput of userInputs){
         userInput.value ='';
